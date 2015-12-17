@@ -1,0 +1,11 @@
+
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+	for name in jobs
+		select(id="job-#{name}" name="#{name}", placeholder="#{name}")
+			for item in repeation
+				option(selected=job.repeat == item, value=item) #{item}
+

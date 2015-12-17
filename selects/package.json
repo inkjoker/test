@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "description": "test select",
+  "main": "app.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "sergei solyanik",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
