@@ -1,0 +1,63 @@
+._hide-native-select { position: absolute !important; visibility: hidden !important; }
+
+.custom-select { position: relative; display: block; cursor: pointer; }
+
+.custom-select > .selected { position: relative; margin: 0; padding: 0 0.625rem; border: 0.0625rem solid #e1e1e1; border-radius: 0.125rem; font: 400 14px/3.5 "Helvetica", Arial, sans-serif; }
+
+.custom-select > .selected:before { -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-transition: transform 50ms ease-out; transition: transform 50ms ease-out; position: absolute; top: 50%; right: 0.875rem; margin: -0.21875rem 0 0; width: 0.4375rem; height: 0.4375rem; border-width: 0 0 0.125rem 0.125rem; border-style: solid; border-color: #000; content: ""; }
+
+.custom-select > .options { margin: 0; padding: 0; list-style: none; background: #fff;  z-index: 5;   overflow-x: hidden; overflow-y: auto; max-height: 9.375rem; width: 100%; border: 0.0625rem solid #e1e1e1; border-top: none; border-radius: 0 0 0.125rem 0.125rem; }
+.custom-select > .options  { position: absolute; display: none;}
+.custom-select > .options > .option { padding: 0 0.625rem; border-bottom: 0.0625rem solid #e1e1e1; font: 400 14px/3.5 "Helvetica", Arial, sans-serif; }
+
+.custom-select > .options > .option:last-child { border-bottom: none; }
+
+.custom-select > .options > .option.-novalue, .custom-select.-typefourth.-extended > .options > .option.-novalue { display: none; }
+
+.custom-select.-open > .options { display: block; }
+
+.custom-select.-noscroll > .options { overflow: visible; }
+
+.custom-select.-typefirst > .selected { background: #fff; color: #000; }
+
+.custom-select.-typefirst > .options > .option { background: #fff; color: #000; }
+
+.custom-select.-typesecond > .selected { background: #ddd; color: #333; }
+
+.custom-select.-typesecond > .options > .option { background: #fff; color: #333; }
+
+.custom-select.-typesecond > .options > .option:hover { background: #f7f7f7; }
+
+.custom-select.-typesecond.-open > .selected:before { border-color: #333; }
+
+.custom-select.-typethird > .selected { background: #ddd; color: #f85300; }
+
+.custom-select.-typethird > .options { padding: 0.125rem; background: #ddd; }
+
+.custom-select.-typethird > .options > .option { background: #fff; color: #000; }
+
+.custom-select.-typethird > .options > .option:hover { background: #f85300; color: #fff; }
+
+.custom-select.-typefourth > .selected { padding: 0 0.5rem; height: 50px; text-transform: uppercase; font: 400 14px/3.5 "TradeGothicW01-BoldCn20", "Helvetica", Arial, sans-serif; }
+
+.custom-select.-typefourth.-open > .selected { height: 55px; border-bottom: none; border-bottom-right-radius: 0; border-bottom-left-radius: 0; color: #f85300; }
+
+.custom-select.-typefourth.-open > .selected:before { top: 46%; border-color: #f85300; }
+
+.custom-select.-typefourth > .options { padding: 0 0.625rem 0.625rem; background: #ddd; }
+
+.custom-select.-typefourth > .options > .option { color: #333; text-align: center; font: 400 13px/28px "TradeGothicW01-BoldCn20", "Helvetica", Arial, sans-serif; }
+
+.custom-select.-typefourth > .options > .option:first-child { border-top-left-radius: 0.125rem; border-top-right-radius: 0.125rem; }
+
+.custom-select.-typefourth > .options > .option:last-child { border-bottom-right-radius: 0.125rem; border-bottom-left-radius: 0.125rem; }
+
+.custom-select.-typefourth > .options > .option.-selected, .custom-select.-typefourth > .options > .option:hover { background: #333; color: #fff; }
+
+.custom-select.-typefourth > .options > .option.-disabled { background: #e9e9e9; color: #7e7e7e; pointer-events: none; }
+
+.custom-select.-typefourth.-extended > .options { padding: 0.625rem 0.625rem 0.625rem; width: 274px; }
+
+@media only screen and (max-width: 75em) { .custom-select.-typefourth.-extended > .options { max-width: none; width: 100%; } }
+
+.custom-select.-typefourth.-extended > .options > .option { display: inline-block; width: 33.333%; border: 0.0625rem solid #ddd; }

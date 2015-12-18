@@ -1,10 +1,19 @@
 window.onload = function () {
-	var select1 = document.getElementById('job-pilot'),
-		select2 = document.getElementById('job-plumber');
+	var select1 = document.getElementById('female'),
+		select2 = document.getElementById('male');
 	
-	var pilot = new SelectView(select1),
-		plumber = new SelectView(select2);
+	var female = new SelectView(select1),
+		male = new SelectView(select2);
 
-		console.log(pilot)
-		console.log(plumber)
+
+    //
+    //var mediator = {
+    //    unisexNames: function() {
+    //        male.on('change', function (selected) {
+    //            female.trigger('change', selected);
+    //        });
+    //    }
+    //};
+    //
+    //mediator.unisexNames();
 }

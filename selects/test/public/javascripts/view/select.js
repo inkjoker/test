@@ -20,7 +20,7 @@ var SelectView = (function () {
 					innerText: item.text
 				}
 			}
-			
+
 			return array;
 		}
 	};
@@ -58,13 +58,17 @@ var SelectView = (function () {
 			}));
 
 			this.selected = this.renderSelected(Object.extend( Object.extend({}, model), {
-				innerText: model.value, 
+				innerText: model.value,
 				className: options.selectedClass
 			}));
 
 			this.options = this.renderOptions(this.select.collection, {
 				className: options.optionsClass				
 			});
+
+            this.selected.observe('click', function () {
+                this.up(0).toggleClassName('-open');
+            });
 
 			this.wrapper.appendChild(this.selected);
 			this.wrapper.appendChild(this.options);
@@ -79,7 +83,8 @@ var SelectView = (function () {
 
 			for (key in attributes) {
 				if (key != 'id') {
-					unit[key] = attributes[key];					
+                    unit[key] = attributes[key];
+                    unit.setAttribute(key, attributes[key]);
 				} else {
 					unit.setAttribute('data-id', attributes[key]);
 				}
@@ -123,9 +128,15 @@ var SelectView = (function () {
 
 			this.on('change', function (selected) {
 				var value = selected.getAttribute('value');
+
 				$(scope.select.get('id')).value  = value;
 				scope.select.trigger('change', 'value', value);
+                scope.trigger('change.selected', value);
 			});
+            this.on('change.selected', function (value) {
+                scope.selected.innerText = value;
+                scope.selected.up(0).removeClassName('-open');
+            });
 		}
 	})
 }());

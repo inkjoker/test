@@ -5,11 +5,15 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { 
   	title: 'Express2',
-  	job: {
-  		repeat: 3
+  	selected: {
+        'female': 'Jain',
+        'mail': 'Mike'
   	},
-  	jobs: ['pilot', 'plumber'],
-  	repeation: [1, 2, 3, 4, 5]
+  	sex: ['female', 'male'],
+  	repeation: {
+        'female': ['Jain', 'Lina', 'Sara', 'Mishel', 'Alex', 'Kris'],
+        'male': ['Mike', 'Alex', 'Kris', 'Antony', 'Poul']
+    }
   });
 });
 
