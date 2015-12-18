@@ -18,8 +18,17 @@ var OptionModel = (function () {
 		},
 		set: function (name, value) {
 			if (!name && !value) return false;
+            var key;
 
-			this.model[name] = value;
+            if (typeof arguments[0] == 'object') {
+                for (key in arguments[0]) {
+                    this.model[key] = arguments[0][key];
+                }
+            } else {
+                this.model[name] = value;
+            }
+
+            this.trigger('change', this);
 
 			return this.model[name];
 		},
@@ -27,15 +36,6 @@ var OptionModel = (function () {
 			if (!name) return undefined;
 
 			return this.model[name];
-		},
-		bindApi: function () {
-			this.on('change', function (name, value) {
-				console.log('model id - [' + this.get('id') + '] name - [' + name + '] : has been updated. value: [' + value + ']');
-				return {
-					name: name,
-					value: value
-				}
-			});
 		}
 	})
 }());

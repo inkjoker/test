@@ -13,7 +13,8 @@ var SelectModel = (function () {
 		initialize: function ($super, data, array) {			
 			if (!data) return false;
 
-			var i, s;
+			var scope = this,
+                i, s;
 			this.bindApi();
 
 			this.model = Object.extend(Object.extend({}, this.model), data);
@@ -26,6 +27,13 @@ var SelectModel = (function () {
 			for (i = 0; i < s; i++) {
 				this.collection[i] = new OptionModel(array[i]);
 
+                this.collection[i].on('change', function (model) {
+                    scope.set({
+                        selected: model,
+                        value: model.get('value')
+                    });
+                });
+
 				if (data.value == this.collection[i].get('value')) {
 					this.model.selected = this.collection[i];
 				}
@@ -34,7 +42,15 @@ var SelectModel = (function () {
 		set: function (name, value) {
 			if (!name && !value) return false;
 
-			this.model[name] = value;
+            if (typeof arguments[0] == 'object') {
+                for (key in arguments[0]) {
+                    this.model[key] = arguments[0][key];
+                }
+            } else {
+                this.model[name] = value;
+            }
+
+            this.trigger('change', name, value);
 
 			return this.model[name];
 		},
@@ -51,21 +67,22 @@ var SelectModel = (function () {
 			}
 		},
 		bindApi: function () {
-			this.on('change', function (name, value) {
 
-				this.model.previous = this.findWhere('selected', true);
-				this.model.selected = this.findWhere(name, value);
-
-				this.model.previous.trigger('change', 'selected', false);
-				this.model.selected.trigger('change', 'selected', true);
-
-				this.set('value', value);
-
-				return {
-					name: name,
-					value: value
-				}
-			});
+			//this.on('change', function (name, value) {
+            //
+			//	this.model.previous = this.findWhere('selected', true);
+			//	this.model.selected = this.findWhere(name, value);
+            //
+			//	this.model.previous.trigger('change', 'selected', false);
+			//	this.model.selected.trigger('change', 'selected', true);
+            //
+			//	this.set('value', value);
+            //
+			//	return {
+			//		name: name,
+			//		value: value
+			//	}
+			//});
 		}
 	})
 }());

@@ -6,14 +6,14 @@ window.onload = function () {
 		male = new SelectView(select2);
 
 
-    //
-    //var mediator = {
-    //    unisexNames: function() {
-    //        male.on('change', function (selected) {
-    //            female.trigger('change', selected);
-    //        });
-    //    }
-    //};
-    //
-    //mediator.unisexNames();
+
+    var mediator = {
+        unisexNames: function() {
+            male.on('change', function (selected) {
+                female.trigger('change', selected);
+            });
+        }
+    };
+
+    mediator.unisexNames();
 }

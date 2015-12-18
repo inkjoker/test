@@ -127,15 +127,24 @@ var SelectView = (function () {
 			var scope = this;
 
 			this.on('change', function (selected) {
-				var value = selected.getAttribute('value');
+				var name = selected.getAttribute('name'),
+                    value = selected.getAttribute('value'),
+                    model = this.select.findWhere('name', name),
+                    modelPrev = this.select.get('selected');
 
-				$(scope.select.get('id')).value  = value;
-				scope.select.trigger('change', 'value', value);
+                modelPrev.set('selected', false);
+                this.select.set('previous', modelPrev);
+                model.set('selected', true);
+
+                $(scope.select.get('id')).value  = value;
                 scope.trigger('change.selected', value);
 			});
             this.on('change.selected', function (value) {
                 scope.selected.innerText = value;
                 scope.selected.up(0).removeClassName('-open');
+            });
+            this.select.on('change', function (name) {
+                console.log('Select has changed. Trigger was called in view file.');
             });
 		}
 	})
